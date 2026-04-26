@@ -2,10 +2,10 @@ import cv2
 import sys
 import numpy
 
-PREVIEW  = 0  # Preview Mode
-BLUR     = 1  # Blurring Filter
-FEATURES = 2  # Corner Feature Detector
-CANNY    = 3  # Canny Edge Detector
+PREVIEW  = 0
+BLUR     = 1
+FEATURES = 2
+CANNY    = 3
 
 feature_params = dict(maxCorners=500, qualityLevel=0.2, minDistance=15, blockSize=9)
 s = 0
