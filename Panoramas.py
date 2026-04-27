@@ -29,3 +29,9 @@ for i in range(num_images):
 stitcher = cv2.Stitcher_create()
 status, result = stitcher.stitch(images)
 
+if status == cv2.Stitcher_OK:
+    plt.figure(figsize=[15, 5])
+    plt.imshow(result)
+    plt.axis("off")
+else:
+    print("Stitching failed with status:", status)
