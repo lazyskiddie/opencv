@@ -1,7 +1,6 @@
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-import time
 
 def readImagesAndTimes():
     filenames = ["img_0.033.jpg", "img_0.25.jpg", "img_2.5.jpg", "img_15.jpg"]
@@ -22,7 +21,6 @@ alignMTB.process(images, images)
 calibrateDebevec = cv2.createCalibrateDebevec()
 responseDebevec = calibrateDebevec.process(images, times)
 
-# Plot CRF
 x = np.arange(256, dtype=np.uint8)
 y = np.squeeze(responseDebevec)
 
@@ -47,3 +45,12 @@ tonemapReinhard = cv2.createTonemapReinhard(1.5, 0, 0, 0)
 ldrReinhard = tonemapReinhard.process(hdrDebevec)
 
 plt.figure(figsize=(20, 10));plt.imshow(np.clip(ldrReinhard, 0, 1)[:,:,::-1]);plt.axis("off")
+
+print("Tonemaping using Mantiuk's method ... ")
+tonemapMantiuk = cv2.createTonemapMantiuk(2.2, 0.85, 1.2)
+ldrMantiuk = tonemapMantiuk.process(hdrDebevec)
+ldrMantiuk = 3 * ldrMantiuk
+
+
+plt.figure(figsize=(20, 10));plt.imshow(np.clip(ldrMantiuk, 0, 1)[:,:,::-1]);plt.axis("off")
+
