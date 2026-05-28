@@ -13,7 +13,14 @@ import cv2
    |       |  /
    |_______| /
   next frame
-
-
-
 """
+
+import cv2
+import numpy as np
+# Create matrix
+mat = np.random.randint(0, 256, (100, 100), dtype=np.uint8)
+# Save directly
+cv2.imshow('output_image.png', mat)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
